@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-start: #0a0e1a;
+      --bg-mid: #131b2e;
+      --bg-end: #0d1321;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-primary: #f5f0f0;
+      --text-secondary: rgba(245, 240, 240, 0.55);
+      --accent: #e8a0b4;
+      --accent-glow: rgba(232, 160, 180, 0.25);
+      --number-size: clamp(2.5rem, 8vw, 5rem);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(232, 160, 180, 0.06) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(245, 198, 160, 0.04) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) rotate(0deg); }
+      to { transform: translate(-2%, 2%) rotate(3deg); }
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .info-page {
+      display: block;
+    }
+
+    .info-page .psst {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      opacity: 0.08;
+      letter-spacing: 0.1em;
+      user-select: none;
+    }
+
+    .countdown-page {
+      display: none;
+    }
+
+    .countdown-page h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.3em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #f5c6a0, var(--accent), #f0b8c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .countdown-page .date-info {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: clamp(0.5rem, 2vw, 1.5rem);
+      margin-bottom: 2rem;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .countdown-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 3vw, 1.8rem);
+      min-width: clamp(70px, 18vw, 120px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2),
+                  0 0 40px var(--accent-glow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .countdown-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                  0 0 60px var(--accent-glow);
+    }
+
+    .countdown-number {
+      font-size: var(--number-size);
+      font-weight: 800;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-primary);
+    }
+
+    .countdown-label {
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .separator {
+      font-size: var(--number-size);
+      font-weight: 200;
+      color: var(--accent);
+      opacity: 0.5;
+      padding-top: clamp(0.8rem, 2vw, 1.2rem);
+      animation: blink 1s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.15; }
+    }
+
+    .sentence-countdown {
+      color: var(--text-secondary);
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    .together-counter {
+      color: var(--text-secondary);
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      margin-top: 0.5rem;
+      opacity: 0.7;
+    }
+
+    .event-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .event-item {
+      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+      color: var(--text-secondary);
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease, color 0.3s ease;
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .event-item:hover {
+      opacity: 0.8;
+      color: var(--accent);
+    }
+
+    .event-item.active {
+      opacity: 0.9;
+      color: var(--accent);
+    }
+
+    .event-item.past {
+      opacity: 0.25;
+      text-decoration: line-through;
+      cursor: default;
+    }
+
+    .event-item.past:hover {
+      opacity: 0.25;
+      color: var(--text-secondary);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse {
+      animation: pulse 200ms ease;
+    }
+
+    .star {
+      position: fixed;
+      border-radius: 50%;
+      background: #f5c6a0;
+      pointer-events: none;
+      animation: twinkle var(--duration) var(--delay) ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: var(--max-opacity); }
+    }
+
+    .paw-print {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 1rem;
+      animation: pawFade 1.5s ease forwards;
+    }
+
+    @keyframes pawFade {
+      0% { opacity: 0.7; }
+      70% { opacity: 0.5; }
+      100% { opacity: 0; }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 9999;
+      animation: confettiFall var(--fall-duration) ease-in forwards;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(var(--spin)); opacity: 0; }
+    }
+
+    .arrived {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .arrived h2 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #f5c6a0, var(--accent), #f0b8c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .arrived p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 480px) {
+      .separator {
+        display: none;
+      }
+
+      .countdown {
+        gap: 0.5rem;
+      }
+
+      .countdown-card {
+        min-width: 65px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="info-page" id="infoPage">
+      <p class="psst">psst...</p>
+    </div>
+
+    <div class="countdown-page" id="countdownPage">
+      <h1 id="eventTitle">Countdown</h1>
+      <p class="date-info" id="dateInfo"></p>
+
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+          <div class="countdown-card">
+            <span class="countdown-number" id="hours">--</span>
+          </div>
+          <span class="countdown-label">Stunden</span>
+        </div>
+        <span class="separator">:</span>
+        <div class="countdown-unit">
+          <div class="countdown-card">
+            <span class="countdown-number" id="minutes">--</span>
+          </div>
+          <span class="countdown-label">Minuten</span>
+        </div>
+        <span class="separator">:</span>
+        <div class="countdown-unit">
+          <div class="countdown-card">
+            <span class="countdown-number" id="seconds">--</span>
+          </div>
+          <span class="countdown-label">Sekunden</span>
+        </div>
+      </div>
+
+      <p class="sentence-countdown" id="sentenceCountdown"></p>
+      <p class="together-counter" id="togetherCounter"></p>
+
+      <div class="event-list" id="eventList"></div>
+
+      <div class="arrived" id="arrived">
+        <h2>Es ist so weit! 🎉</h2>
+        <p id="arrivedSub">Let's go!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var SECRET_HASH = 'wiedersehen';
+
+      var events = [
+        { name: 'GPN22', from: '2026-06-04T12:20:00+02:00', to: '2026-06-07', location: 'Karlsruhe' },
+        { name: 'Camping', from: '2026-06-11T18:00:00+02:00', to: '2026-06-14', location: 'Green Camping Harz Hideaway' }
+      ];
+
+      var infoPage = document.getElementById('infoPage');
+      var countdownPage = document.getElementById('countdownPage');
+      var countdownEl = document.getElementById('countdown');
+      var arrivedEl = document.getElementById('arrived');
+      var sentenceEl = document.getElementById('sentenceCountdown');
+      var togetherEl = document.getElementById('togetherCounter');
+      var eventTitleEl = document.getElementById('eventTitle');
+      var dateInfoEl = document.getElementById('dateInfo');
+      var arrivedSubEl = document.getElementById('arrivedSub');
+      var eventListEl = document.getElementById('eventList');
+
+      var hoursEl = document.getElementById('hours');
+      var minutesEl = document.getElementById('minutes');
+      var secondsEl = document.getElementById('seconds');
+
+      var prevValues = { hours: null, minutes: null, seconds: null };
+      var activeEventIndex = -1;
+
+      function pad(n, len) {
+        var s = String(n);
+        while (s.length < len) s = '0' + s;
+        return s;
+      }
+
+      function rand(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function formatDate(isoFrom, isoTo) {
+        var from = new Date(isoFrom);
+        var to = new Date(isoTo);
+        var dayFrom = from.getDate();
+        var dayTo = to.getDate();
+        var month = to.toLocaleDateString('de-DE', { month: 'long' });
+        var year = from.getFullYear();
+        return dayFrom + '.\u2013' + dayTo + '. ' + month + ' ' + year;
+      }
+
+      function formatDateWithTime(iso) {
+        var d = new Date(iso);
+        var day = d.getDate();
+        var month = d.toLocaleDateString('de-DE', { month: 'long' });
+        var year = d.getFullYear();
+        var h = pad(d.getHours(), 2);
+        var m = pad(d.getMinutes(), 2);
+        return day + '. ' + month + ' ' + year + ' \u00B7 ' + h + ':' + m + ' Uhr';
+      }
+
+      function isPast(isoTo) {
+        return Date.now() > new Date(isoTo + 'T23:59:59+02:00').getTime();
+      }
+
+      function getNextEventIndex() {
+        for (var i = 0; i < events.length; i++) {
+          if (!isPast(events[i].to)) return i;
+        }
+        return -1;
+      }
+
+      function buildEventList() {
+        eventListEl.innerHTML = '';
+        for (var i = 0; i < events.length; i++) {
+          var ev = events[i];
+          var el = document.createElement('div');
+          el.className = 'event-item';
+          el.textContent = '\u2665 ' + ev.name + ' \u00B7 ' + formatDate(ev.from, ev.to) + ' \u00B7 ' + ev.location;
+          if (isPast(ev.to)) {
+            el.classList.add('past');
+          } else if (i === activeEventIndex) {
+            el.classList.add('active');
+          }
+          if (!isPast(ev.to)) {
+            (function (idx) {
+              el.addEventListener('click', function () {
+                selectEvent(idx);
+              });
+            })(i);
+          }
+          eventListEl.appendChild(el);
+        }
+      }
+
+      function selectEvent(idx) {
+        activeEventIndex = idx;
+        var ev = events[idx];
+        eventTitleEl.textContent = 'Countdown zum ' + ev.name;
+        dateInfoEl.textContent = formatDateWithTime(ev.from);
+        confettiLaunched = false;
+        arrivedEl.style.display = 'none';
+        countdownEl.style.display = '';
+        sentenceEl.style.display = '';
+        togetherEl.style.display = '';
+        arrivedSubEl.textContent = ev.name + ' \u00B7 Let\'s go!';
+        buildEventList();
+      }
+
+      var starsCreated = false;
+
+      function createStars() {
+        if (starsCreated) return;
+        starsCreated = true;
+        for (var i = 0; i < 40; i++) {
+          var star = document.createElement('div');
+          star.className = 'star';
+          var size = rand(1, 3);
+          star.style.width = size + 'px';
+          star.style.height = size + 'px';
+          star.style.left = rand(0, 100) + 'vw';
+          star.style.top = rand(0, 100) + 'vh';
+          star.style.setProperty('--duration', rand(2, 5) + 's');
+          star.style.setProperty('--delay', rand(0, 5) + 's');
+          star.style.setProperty('--max-opacity', rand(0.3, 0.8));
+          document.body.appendChild(star);
+        }
+      }
+
+      function removeStars() {
+        var stars = document.querySelectorAll('.star');
+        for (var i = 0; i < stars.length; i++) stars[i].remove();
+        starsCreated = false;
+      }
+
+      var lastPawX = -100;
+      var lastPawY = -100;
+      var pawAlternating = false;
+
+      function spawnPaw(x, y) {
+        var dx = x - lastPawX;
+        var dy = y - lastPawY;
+        if (Math.sqrt(dx * dx + dy * dy) < 70) return;
+
+        lastPawX = x;
+        lastPawY = y;
+
+        var paw = document.createElement('div');
+        paw.className = 'paw-print';
+        paw.textContent = '🐾';
+        var offsetX = pawAlternating ? -12 : 12;
+        pawAlternating = !pawAlternating;
+        paw.style.left = (x + offsetX) + 'px';
+        paw.style.top = y + 'px';
+        document.body.appendChild(paw);
+
+        setTimeout(function () {
+          paw.remove();
+        }, 1600);
+      }
+
+      document.addEventListener('mousemove', function (e) {
+        spawnPaw(e.clientX, e.clientY);
+      });
+
+      document.addEventListener('touchmove', function (e) {
+        var touch = e.touches[0];
+        spawnPaw(touch.clientX, touch.clientY);
+      }, { passive: true });
+
+      document.addEventListener('touchstart', function (e) {
+        var touch = e.touches[0];
+        spawnPaw(touch.clientX, touch.clientY);
+      }, { passive: true });
+
+      function triggerPulse(el) {
+        el.classList.remove('pulse');
+        void el.offsetWidth;
+        el.classList.add('pulse');
+      }
+
+      function calculateTogetherDays() {
+        var now = new Date();
+        var base = 9;
+        for (var i = 0; i < events.length; i++) {
+          var start = new Date(events[i].from);
+          start.setHours(0, 0, 0, 0);
+          var end = new Date(events[i].to + 'T23:59:59+02:00');
+          if (now >= start) {
+            var done = now < end ? Math.floor((now - start) / 86400000) + 1 : Math.ceil((end - start) / 86400000);
+            base += done;
+          }
+        }
+        return base;
+      }
+
+      function launchConfetti() {
+        var colors = ['#e8a0b4', '#f5c6a0', '#f0b8c8', '#fbbf24', '#6ee7b7', '#93c5fd', '#c4b5fd'];
+        for (var i = 0; i < 80; i++) {
+          var c = document.createElement('div');
+          c.className = 'confetti';
+          c.style.left = rand(0, 100) + 'vw';
+          c.style.background = colors[Math.floor(rand(0, colors.length))];
+          c.style.width = rand(5, 10) + 'px';
+          c.style.height = rand(5, 10) + 'px';
+          c.style.borderRadius = rand(0, 1) > 0.5 ? '50%' : '2px';
+          c.style.setProperty('--fall-duration', rand(2, 4) + 's');
+          c.style.setProperty('--spin', rand(360, 1080) + 'deg');
+          c.style.animationDelay = rand(0, 1) + 's';
+          document.body.appendChild(c);
+          c.addEventListener('animationend', function () {
+            this.remove();
+          });
+        }
+      }
+
+      var confettiLaunched = false;
+
+      function buildSentence(d, h, m) {
+        if (d > 0 && h > 0 && m > 0) return 'Nur noch ' + d + ' Tage, ' + h + ' Stunden und ' + m + ' Minuten';
+        if (d > 0 && h > 0) return 'Nur noch ' + d + ' Tage und ' + h + ' Stunden';
+        if (d > 0) return 'Nur noch ' + d + ' Tage';
+        if (h > 0 && m > 0) return 'Nur noch ' + h + ' Stunden und ' + m + ' Minuten';
+        if (h > 0) return 'Nur noch ' + h + ' Stunden';
+        if (m > 0) return 'Nur noch ' + m + ' Minuten';
+        return 'Gleich ist es soweit!';
+      }
+
+      function showView(hash) {
+        if (hash === '#' + SECRET_HASH) {
+          infoPage.style.display = 'none';
+          countdownPage.style.display = 'block';
+          createStars();
+          if (activeEventIndex === -1) {
+            var next = getNextEventIndex();
+            if (next >= 0) selectEvent(next);
+          }
+        } else {
+          infoPage.style.display = 'block';
+          countdownPage.style.display = 'none';
+          document.title = '';
+          removeStars();
+        }
+      }
+
+      function update() {
+        if (activeEventIndex < 0) return;
+
+        var ev = events[activeEventIndex];
+        var target = new Date(ev.from).getTime();
+        var now = Date.now();
+        var diff = target - now;
+
+        if (diff <= 0) {
+          countdownEl.style.display = 'none';
+          arrivedEl.style.display = 'flex';
+          sentenceEl.style.display = 'none';
+          togetherEl.style.display = 'none';
+          if (!confettiLaunched) {
+            confettiLaunched = true;
+            launchConfetti();
+          }
+          return;
+        }
+
+        countdownEl.style.display = '';
+        arrivedEl.style.display = 'none';
+        sentenceEl.style.display = '';
+        togetherEl.style.display = '';
+
+        var totalSeconds = Math.floor(diff / 1000);
+        var d = Math.floor(totalSeconds / 86400);
+        var h = Math.floor(totalSeconds / 3600);
+        var m = Math.floor((totalSeconds % 3600) / 60);
+        var s = totalSeconds % 60;
+
+        var vals = { hours: h, minutes: pad(m, 2), seconds: pad(s, 2) };
+
+        if (prevValues.hours !== vals.hours) { hoursEl.textContent = vals.hours; triggerPulse(hoursEl); }
+        if (prevValues.minutes !== vals.minutes) { minutesEl.textContent = vals.minutes; triggerPulse(minutesEl); }
+        if (prevValues.seconds !== vals.seconds) { secondsEl.textContent = vals.seconds; triggerPulse(secondsEl); }
+
+        prevValues = vals;
+
+        sentenceEl.textContent = buildSentence(d, h % 24, m);
+
+        var togetherDays = calculateTogetherDays();
+        togetherEl.textContent = '♥ ' + togetherDays + ' Tage Zeit miteinander';
+      }
+
+      function tick() {
+        update();
+        requestAnimationFrame(tick);
+      }
+
+      showView(window.location.hash);
+      tick();
+
+      window.addEventListener('hashchange', function () {
+        showView(window.location.hash);
+      });
+    })();
+    </script>
+</body>
+</html>
