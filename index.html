@@ -1,655 +1,655 @@
-<!DOCTYPE</body>html>
-<html</body>lang="de">
+<!DOCTYPE html>
+<html lang="de">
 <head>
-</body> <meta charset="UTF-8">
-</body> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</body> <title></title>
-</body> <link rel="preconnect" href="https://fonts.googleapis.com">
-</body> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-</body> <style>
-</body>   *,
-</body>   *::before,
-</body>   *::after {
-</body>     margin: 0;
-</body>     padding: 0;
-</body>     box-sizing: border-box;
-</body>   }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-</body>   :root {
-</body>     --bg-start: #0a0e1a;
-</body>     --bg-mid: #131b2e;
-</body>     --bg-end: #0d1321;
-</body>     --card-bg: rgba(255, 255, 255, 0.06);
-</body>     --card-border: rgba(255, 255, 255, 0.1);
-</body>     --text-primary: #f5f0f0;
-</body>     --text-secondary: rgba(245, 240, 240, 0.55);
-</body>     --accent: #e8a0b4;
-</body>     --accent-glow: rgba(232, 160, 180, 0.25);
-</body>     --number-size: clamp(2.5rem, 8vw, 5rem);
-</body>   }
+    :root {
+      --bg-start: #0a0e1a;
+      --bg-mid: #131b2e;
+      --bg-end: #0d1321;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-primary: #f5f0f0;
+      --text-secondary: rgba(245, 240, 240, 0.55);
+      --accent: #e8a0b4;
+      --accent-glow: rgba(232, 160, 180, 0.25);
+      --number-size: clamp(2.5rem, 8vw, 5rem);
+    }
 
-</body>   body {
-</body>     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-</body>     min-height: 100vh;
-</body>     display: flex;
-</body>     flex-direction: column;
-</body>     align-items: center;
-</body>     justify-content: center;
-</body>     background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
-</body>     color: var(--text-primary);
-</body>     overflow-x: hidden;
-</body>     position: relative;
-</body>   }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
 
-</body>   body::before {
-</body>     content: '';
-</body>     position: fixed;
-</body>     top: -50%;
-</body>     left: -50%;
-</body>     width: 200%;
-</body>     height: 200%;
-</body>     background: radial-gradient(circle at 30% 40%, rgba(232, 160, 180, 0.06) 0%, transparent 50%),
-</body>                 radial-gradient(circle at 70% 60%, rgba(245, 198, 160, 0.04) 0%, transparent 50%);
-</body>     animation: drift 20s ease-in-out infinite alternate;
-</body>     pointer-events: none;
-</body>   }
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(232, 160, 180, 0.06) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(245, 198, 160, 0.04) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
 
-</body>   @keyframes drift {
-</body>     from { transform: translate(0, 0) rotate(0deg); }
-</body>     to { transform: translate(-2%, 2%) rotate(3deg); }
-</body>   }
+    @keyframes drift {
+      from { transform: translate(0, 0) rotate(0deg); }
+      to { transform: translate(-2%, 2%) rotate(3deg); }
+    }
 
-</body>   .container {
-</body>     text-align: center;
-</body>     padding: 2rem;
-</body>     max-width: 900px;
-</body>     width: 100%;
-</body>   }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+      width: 100%;
+    }
 
-</body>   .info-page {
-</body>     display: block;
-</body>   }
+    .info-page {
+      display: block;
+    }
 
-</body>   .info-page .psst {
-</body>     font-size: 0.9rem;
-</body>     color: var(--text-primary);
-</body>     opacity: 0.08;
-</body>     letter-spacing: 0.1em;
-</body>     user-select: none;
-</body>   }
+    .info-page .psst {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      opacity: 0.08;
+      letter-spacing: 0.1em;
+      user-select: none;
+    }
 
-</body>   .countdown-page {
-</body>     display: none;
-</body>   }
+    .countdown-page {
+      display: none;
+    }
 
-</body>   .countdown-page h1 {
-</body>     font-size: clamp(1.8rem, 5vw, 3rem);
-</body>     font-weight: 800;
-</body>     margin-bottom: 0.3em;
-</body>     line-height: 1.1;
-</body>     background: linear-gradient(135deg, #f5c6a0, var(--accent), #f0b8c8);
-</body>     -webkit-background-clip: text;
-</body>     -webkit-text-fill-color: transparent;
-</body>     background-clip: text;
-</body>   }
+    .countdown-page h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.3em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #f5c6a0, var(--accent), #f0b8c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-</body>   .countdown-page .date-info {
-</body>     font-size: clamp(0.85rem, 2vw, 1rem);
-</body>     color: var(--text-secondary);
-</body>     margin-bottom: 3rem;
-</body>     font-weight: 400;
-</body>   }
+    .countdown-page .date-info {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
 
-</body>   .countdown {
-</body>     display: flex;
-</body>     justify-content: center;
-</body>     align-items: flex-start;
-</body>     flex-wrap: wrap;
-</body>     gap: clamp(0.5rem, 2vw, 1.5rem);
-</body>     margin-bottom: 2rem;
-</body>   }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: clamp(0.5rem, 2vw, 1.5rem);
+      margin-bottom: 2rem;
+    }
 
-</body>   .countdown-unit {
-</body>     display: flex;
-</body>     flex-direction: column;
-</body>     align-items: center;
-</body>     gap: 0.5rem;
-</body>   }
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-</body>   .countdown-card {
-</body>     background: var(--card-bg);
-</body>     backdrop-filter: blur(12px);
-</body>     -webkit-backdrop-filter: blur(12px);
-</body>     border: 1px solid var(--card-border);
-</body>     border-radius: 1rem;
-</body>     padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 3vw, 1.8rem);
-</body>     min-width: clamp(70px, 18vw, 120px);
-</body>     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2),
-</body>                 0 0 40px var(--accent-glow);
-</body>     transition: transform 0.3s ease, box-shadow 0.3s ease;
-</body>   }
+    .countdown-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 3vw, 1.8rem);
+      min-width: clamp(70px, 18vw, 120px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2),
+                  0 0 40px var(--accent-glow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-</body>   .countdown-card:hover {
-</body>     transform: translateY(-4px);
-</body>     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-</body>                 0 0 60px var(--accent-glow);
-</body>   }
+    .countdown-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                  0 0 60px var(--accent-glow);
+    }
 
-</body>   .countdown-number {
-</body>     font-size: var(--number-size);
-</body>     font-weight: 800;
-</body>     line-height: 1;
-</body>     font-variant-numeric: tabular-nums;
-</body>     color: var(--text-primary);
-</body>   }
+    .countdown-number {
+      font-size: var(--number-size);
+      font-weight: 800;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-primary);
+    }
 
-</body>   .countdown-label {
-</body>     font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-</body>     text-transform: uppercase;
-</body>     letter-spacing: 0.15em;
-</body>     color: var(--text-secondary);
-</body>     font-weight: 600;
-</body>   }
+    .countdown-label {
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
 
-</body>   .separator {
-</body>     font-size: var(--number-size);
-</body>     font-weight: 200;
-</body>     color: var(--accent);
-</body>     opacity: 0.5;
-</body>     padding-top: clamp(0.8rem, 2vw, 1.2rem);
-</body>     animation: blink 1s ease-in-out infinite;
-</body>   }
+    .separator {
+      font-size: var(--number-size);
+      font-weight: 200;
+      color: var(--accent);
+      opacity: 0.5;
+      padding-top: clamp(0.8rem, 2vw, 1.2rem);
+      animation: blink 1s ease-in-out infinite;
+    }
 
-</body>   @keyframes blink {
-</body>     0%, 100% { opacity: 0.5; }
-</body>     50% { opacity: 0.15; }
-</body>   }
+    @keyframes blink {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.15; }
+    }
 
-</body>   .sentence-countdown {
-</body>     color: var(--text-secondary);
-</body>     font-size: clamp(0.85rem, 2vw, 1.05rem);
-</body>     margin-top: 1rem;
-</body>     margin-bottom: 1rem;
-</body>     opacity: 0.8;
-</body>   }
+    .sentence-countdown {
+      color: var(--text-secondary);
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
 
-</body>   .together-counter {
-</body>     color: var(--text-secondary);
-</body>     font-size: clamp(0.8rem, 1.8vw, 0.95rem);
-</body>     margin-top: 0.5rem;
-</body>     opacity: 0.7;
-</body>   }
+    .together-counter {
+      color: var(--text-secondary);
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      margin-top: 0.5rem;
+      opacity: 0.7;
+    }
 
-</body>   .event-list {
-</body>     margin-top: 2rem;
-</body>     display: flex;
-</body>     flex-direction: column;
-</body>     align-items: center;
-</body>     gap: 0.6rem;
-</body>   }
+    .event-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
 
-</body>   .event-item {
-</body>     font-size: clamp(0.75rem, 1.5vw, 0.85rem);
-</body>     color: var(--text-secondary);
-</body>     cursor: pointer;
-</body>     opacity: 0.5;
-</body>     transition: opacity 0.3s ease, color 0.3s ease;
-</body>     user-select: none;
-</body>     text-decoration: none;
-</body>   }
+    .event-item {
+      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+      color: var(--text-secondary);
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease, color 0.3s ease;
+      user-select: none;
+      text-decoration: none;
+    }
 
-</body>   .event-item:hover {
-</body>     opacity: 0.8;
-</body>     color: var(--accent);
-</body>   }
+    .event-item:hover {
+      opacity: 0.8;
+      color: var(--accent);
+    }
 
-</body>   .event-item.active {
-</body>     opacity: 0.9;
-</body>     color: var(--accent);
-</body>   }
+    .event-item.active {
+      opacity: 0.9;
+      color: var(--accent);
+    }
 
-</body>   .event-item.past {
-</body>     opacity: 0.25;
-</body>     text-decoration: line-through;
-</body>     cursor: default;
-</body>   }
+    .event-item.past {
+      opacity: 0.25;
+      text-decoration: line-through;
+      cursor: default;
+    }
 
-</body>   .event-item.past:hover {
-</body>     opacity: 0.25;
-</body>     color: var(--text-secondary);
-</body>   }
+    .event-item.past:hover {
+      opacity: 0.25;
+      color: var(--text-secondary);
+    }
 
-</body>   @keyframes pulse {
-</body>     0% { transform: scale(1); }
-</body>     50% { transform: scale(1.08); }
-</body>     100% { transform: scale(1); }
-</body>   }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
 
-</body>   .pulse {
-</body>     animation: pulse 200ms ease;
-</body>   }
+    .pulse {
+      animation: pulse 200ms ease;
+    }
 
-</body>   .star {
-</body>     position: fixed;
-</body>     border-radius: 50%;
-</body>     background: #f5c6a0;
-</body>     pointer-events: none;
-</body>     animation: twinkle var(--duration) var(--delay) ease-in-out infinite;
-</body>   }
+    .star {
+      position: fixed;
+      border-radius: 50%;
+      background: #f5c6a0;
+      pointer-events: none;
+      animation: twinkle var(--duration) var(--delay) ease-in-out infinite;
+    }
 
-</body>   @keyframes twinkle {
-</body>     0%, 100% { opacity: 0; }
-</body>     50% { opacity: var(--max-opacity); }
-</body>   }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: var(--max-opacity); }
+    }
 
-</body>   .paw-print {
-</body>     position: fixed;
-</body>     pointer-events: none;
-</body>     z-index: 9999;
-</body>     font-size: 1rem;
-</body>     animation: pawFade 1.5s ease forwards;
-</body>   }
+    .paw-print {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 1rem;
+      animation: pawFade 1.5s ease forwards;
+    }
 
-</body>   @keyframes pawFade {
-</body>     0% { opacity: 0.7; }
-</body>     70% { opacity: 0.5; }
-</body>     100% { opacity: 0; }
-</body>   }
+    @keyframes pawFade {
+      0% { opacity: 0.7; }
+      70% { opacity: 0.5; }
+      100% { opacity: 0; }
+    }
 
-</body>   .confetti {
-</body>     position: fixed;
-</body>     width: 8px;
-</body>     height: 8px;
-</body>     border-radius: 2px;
-</body>     pointer-events: none;
-</body>     z-index: 9999;
-</body>     animation: confettiFall var(--fall-duration) ease-in forwards;
-</body>   }
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 9999;
+      animation: confettiFall var(--fall-duration) ease-in forwards;
+    }
 
-</body>   @keyframes confettiFall {
-</body>     0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-</body>     100% { transform: translateY(110vh) rotate(var(--spin)); opacity: 0; }
-</body>   }
+    @keyframes confettiFall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(var(--spin)); opacity: 0; }
+    }
 
-</body>   .arrived {
-</body>     display: none;
-</body>     flex-direction: column;
-</body>     align-items: center;
-</body>     gap: 1rem;
-</body>   }
+    .arrived {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
 
-</body>   .arrived h2 {
-</body>     font-size: clamp(1.5rem, 5vw, 2.5rem);
-</body>     font-weight: 800;
-</body>     background: linear-gradient(135deg, #f5c6a0, var(--accent), #f0b8c8);
-</body>     -webkit-background-clip: text;
-</body>     -webkit-text-fill-color: transparent;
-</body>     background-clip: text;
-</body>   }
+    .arrived h2 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #f5c6a0, var(--accent), #f0b8c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-</body>   .arrived p {
-</body>     color: var(--text-secondary);
-</body>     font-size: 1.1rem;
-</body>   }
+    .arrived p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
 
-</body>   @media (max-width: 480px) {
-</body>     .separator {
-</body>       display: none;
-</body>     }
+    @media (max-width: 480px) {
+      .separator {
+        display: none;
+      }
 
-</body>     .countdown {
-</body>       gap: 0.5rem;
-</body>     }
+      .countdown {
+        gap: 0.5rem;
+      }
 
-</body>     .countdown-card {
-</body>       min-width: 65px;
-</body>     }
-</body>   }
-</body> </style>
+      .countdown-card {
+        min-width: 65px;
+      }
+    }
+  </style>
 </head>
 <body>
-</body> <div class="container">
-</body>   <div class="info-page" id="infoPage">
-</body>     <p class="psst">psst...</p>
-</body>   </div>
+  <div class="container">
+    <div class="info-page" id="infoPage">
+      <p class="psst">psst...</p>
+    </div>
 
-</body>   <div class="countdown-page" id="countdownPage">
-</body>     <h1 id="eventTitle">Countdown</h1>
-</body>     <p class="date-info" id="dateInfo"></p>
+    <div class="countdown-page" id="countdownPage">
+      <h1 id="eventTitle">Countdown</h1>
+      <p class="date-info" id="dateInfo"></p>
 
-</body>     <div class="countdown" id="countdown">
-</body>       <div class="countdown-unit">
-</body>         <div class="countdown-card">
-</body>           <span class="countdown-number" id="hours">--</span>
-</body>         </div>
-</body>         <span class="countdown-label">Stunden</span>
-</body>       </div>
-</body>       <span class="separator">:</span>
-</body>       <div class="countdown-unit">
-</body>         <div class="countdown-card">
-</body>           <span class="countdown-number" id="minutes">--</span>
-</body>         </div>
-</body>         <span class="countdown-label">Minuten</span>
-</body>       </div>
-</body>       <span class="separator">:</span>
-</body>       <div class="countdown-unit">
-</body>         <div class="countdown-card">
-</body>           <span class="countdown-number" id="seconds">--</span>
-</body>         </div>
-</body>         <span class="countdown-label">Sekunden</span>
-</body>       </div>
-</body>     </div>
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+          <div class="countdown-card">
+            <span class="countdown-number" id="hours">--</span>
+          </div>
+          <span class="countdown-label">Stunden</span>
+        </div>
+        <span class="separator">:</span>
+        <div class="countdown-unit">
+          <div class="countdown-card">
+            <span class="countdown-number" id="minutes">--</span>
+          </div>
+          <span class="countdown-label">Minuten</span>
+        </div>
+        <span class="separator">:</span>
+        <div class="countdown-unit">
+          <div class="countdown-card">
+            <span class="countdown-number" id="seconds">--</span>
+          </div>
+          <span class="countdown-label">Sekunden</span>
+        </div>
+      </div>
 
-</body>     <p class="sentence-countdown" id="sentenceCountdown"></p>
-</body>     <p class="together-counter" id="togetherCounter"></p>
+      <p class="sentence-countdown" id="sentenceCountdown"></p>
+      <p class="together-counter" id="togetherCounter"></p>
 
-</body>     <div class="event-list" id="eventList"></div>
+      <div class="event-list" id="eventList"></div>
 
-</body>     <div class="arrived" id="arrived">
-</body>       <h2>Es ist so weit! 🎉</h2>
-</body>       <p id="arrivedSub">Let's go!</p>
-</body>     </div>
-</body>   </div>
-</body> </div>
+      <div class="arrived" id="arrived">
+        <h2>Es ist so weit! 🎉</h2>
+        <p id="arrivedSub">Let's go!</p>
+      </div>
+    </div>
+  </div>
 
-</body> <script>
-</body>   (function () {
-</body>     var SECRET_HASH = 'wiedersehen';
+  <script>
+    (function () {
+      var SECRET_HASH = 'wiedersehen';
 
-</body>     var events = [
-</body>       { name: 'GPN22', from: '2026-06-04T12:20:00+02:00', to: '2026-06-07', location: 'Karlsruhe' },
-</body>       { name: 'Camping', from: '2026-06-11T18:00:00+02:00', to: '2026-06-14', location: 'Green Camping Harz Hideaway' }
-</body>     ];
+      var events = [
+        { name: 'GPN22', from: '2026-06-04T12:20:00+02:00', to: '2026-06-07', location: 'Karlsruhe' },
+        { name: 'Camping', from: '2026-06-11T18:00:00+02:00', to: '2026-06-14', location: 'Green Camping Harz Hideaway' }
+      ];
 
-</body>     var infoPage = document.getElementById('infoPage');
-</body>     var countdownPage = document.getElementById('countdownPage');
-</body>     var countdownEl = document.getElementById('countdown');
-</body>     var arrivedEl = document.getElementById('arrived');
-</body>     var sentenceEl = document.getElementById('sentenceCountdown');
-</body>     var togetherEl = document.getElementById('togetherCounter');
-</body>     var eventTitleEl = document.getElementById('eventTitle');
-</body>     var dateInfoEl = document.getElementById('dateInfo');
-</body>     var arrivedSubEl = document.getElementById('arrivedSub');
-</body>     var eventListEl = document.getElementById('eventList');
+      var infoPage = document.getElementById('infoPage');
+      var countdownPage = document.getElementById('countdownPage');
+      var countdownEl = document.getElementById('countdown');
+      var arrivedEl = document.getElementById('arrived');
+      var sentenceEl = document.getElementById('sentenceCountdown');
+      var togetherEl = document.getElementById('togetherCounter');
+      var eventTitleEl = document.getElementById('eventTitle');
+      var dateInfoEl = document.getElementById('dateInfo');
+      var arrivedSubEl = document.getElementById('arrivedSub');
+      var eventListEl = document.getElementById('eventList');
 
-</body>     var hoursEl = document.getElementById('hours');
-</body>     var minutesEl = document.getElementById('minutes');
-</body>     var secondsEl = document.getElementById('seconds');
+      var hoursEl = document.getElementById('hours');
+      var minutesEl = document.getElementById('minutes');
+      var secondsEl = document.getElementById('seconds');
 
-</body>     var prevValues = { hours: null, minutes: null, seconds: null };
-</body>     var activeEventIndex = -1;
+      var prevValues = { hours: null, minutes: null, seconds: null };
+      var activeEventIndex = -1;
 
-</body>     function pad(n, len) {
-</body>       var s = String(n);
-</body>       while (s.length < len) s = '0' + s;
-</body>       return s;
-</body>     }
+      function pad(n, len) {
+        var s = String(n);
+        while (s.length < len) s = '0' + s;
+        return s;
+      }
 
-</body>     function rand(min, max) {
-</body>       return Math.random() * (max - min) + min;
-</body>     }
+      function rand(min, max) {
+        return Math.random() * (max - min) + min;
+      }
 
-</body>     function formatDate(isoFrom, isoTo) {
-</body>       var from = new Date(isoFrom);
-</body>       var to = new Date(isoTo);
-</body>       var dayFrom = from.getDate();
-</body>       var dayTo = to.getDate();
-</body>       var month = to.toLocaleDateString('de-DE', { month: 'long' });
-</body>       var year = from.getFullYear();
-</body>       return dayFrom + '.\u2013' + dayTo + '. ' + month + ' ' + year;
-</body>     }
+      function formatDate(isoFrom, isoTo) {
+        var from = new Date(isoFrom);
+        var to = new Date(isoTo);
+        var dayFrom = from.getDate();
+        var dayTo = to.getDate();
+        var month = to.toLocaleDateString('de-DE', { month: 'long' });
+        var year = from.getFullYear();
+        return dayFrom + '.\u2013' + dayTo + '. ' + month + ' ' + year;
+      }
 
-</body>     function formatDateWithTime(iso) {
-</body>       var d = new Date(iso);
-</body>       var day = d.getDate();
-</body>       var month = d.toLocaleDateString('de-DE', { month: 'long' });
-</body>       var year = d.getFullYear();
-</body>       var h = pad(d.getHours(), 2);
-</body>       var m = pad(d.getMinutes(), 2);
-</body>       return day + '. ' + month + ' ' + year + ' \u00B7 ' + h + ':' + m + ' Uhr';
-</body>     }
+      function formatDateWithTime(iso) {
+        var d = new Date(iso);
+        var day = d.getDate();
+        var month = d.toLocaleDateString('de-DE', { month: 'long' });
+        var year = d.getFullYear();
+        var h = pad(d.getHours(), 2);
+        var m = pad(d.getMinutes(), 2);
+        return day + '. ' + month + ' ' + year + ' \u00B7 ' + h + ':' + m + ' Uhr';
+      }
 
-</body>     function isPast(isoTo) {
-</body>       return Date.now() > new Date(isoTo + 'T23:59:59+02:00').getTime();
-</body>     }
+      function isPast(isoTo) {
+        return Date.now() > new Date(isoTo + 'T23:59:59+02:00').getTime();
+      }
 
-</body>     function getNextEventIndex() {
-</body>       for (var i = 0; i < events.length; i++) {
-</body>         if (!isPast(events[i].to)) return i;
-</body>       }
-</body>       return -1;
-</body>     }
+      function getNextEventIndex() {
+        for (var i = 0; i < events.length; i++) {
+          if (!isPast(events[i].to)) return i;
+        }
+        return -1;
+      }
 
-</body>     function buildEventList() {
-</body>       eventListEl.innerHTML = '';
-</body>       for (var i = 0; i < events.length; i++) {
-</body>         var ev = events[i];
-</body>         var el = document.createElement('div');
-</body>         el.className = 'event-item';
-</body>         el.textContent = '\u2665 ' + ev.name + ' \u00B7 ' + formatDate(ev.from, ev.to) + ' \u00B7 ' + ev.location;
-</body>         if (isPast(ev.to)) {
-</body>           el.classList.add('past');
-</body>         } else if (i === activeEventIndex) {
-</body>           el.classList.add('active');
-</body>         }
-</body>         if (!isPast(ev.to)) {
-</body>           (function (idx) {
-</body>             el.addEventListener('click', function () {
-</body>               selectEvent(idx);
-</body>             });
-</body>           })(i);
-</body>         }
-</body>         eventListEl.appendChild(el);
-</body>       }
-</body>     }
+      function buildEventList() {
+        eventListEl.innerHTML = '';
+        for (var i = 0; i < events.length; i++) {
+          var ev = events[i];
+          var el = document.createElement('div');
+          el.className = 'event-item';
+          el.textContent = '\u2665 ' + ev.name + ' \u00B7 ' + formatDate(ev.from, ev.to) + ' \u00B7 ' + ev.location;
+          if (isPast(ev.to)) {
+            el.classList.add('past');
+          } else if (i === activeEventIndex) {
+            el.classList.add('active');
+          }
+          if (!isPast(ev.to)) {
+            (function (idx) {
+              el.addEventListener('click', function () {
+                selectEvent(idx);
+              });
+            })(i);
+          }
+          eventListEl.appendChild(el);
+        }
+      }
 
-</body>     function selectEvent(idx) {
-</body>       activeEventIndex = idx;
-</body>       var ev = events[idx];
-</body>       eventTitleEl.textContent = 'Countdown zum ' + ev.name;
-</body>       dateInfoEl.textContent = formatDateWithTime(ev.from);
-</body>       confettiLaunched = false;
-</body>       arrivedEl.style.display = 'none';
-</body>       countdownEl.style.display = '';
-</body>       sentenceEl.style.display = '';
-</body>       togetherEl.style.display = '';
-</body>       arrivedSubEl.textContent = ev.name + ' \u00B7 Let\'s go!';
-</body>       buildEventList();
-</body>     }
+      function selectEvent(idx) {
+        activeEventIndex = idx;
+        var ev = events[idx];
+        eventTitleEl.textContent = 'Countdown zum ' + ev.name;
+        dateInfoEl.textContent = formatDateWithTime(ev.from);
+        confettiLaunched = false;
+        arrivedEl.style.display = 'none';
+        countdownEl.style.display = '';
+        sentenceEl.style.display = '';
+        togetherEl.style.display = '';
+        arrivedSubEl.textContent = ev.name + ' \u00B7 Let\'s go!';
+        buildEventList();
+      }
 
-</body>     var starsCreated = false;
+      var starsCreated = false;
 
-</body>     function createStars() {
-</body>       if (starsCreated) return;
-</body>       starsCreated = true;
-</body>       for (var i = 0; i < 40; i++) {
-</body>         var star = document.createElement('div');
-</body>         star.className = 'star';
-</body>         var size = rand(1, 3);
-</body>         star.style.width = size + 'px';
-</body>         star.style.height = size + 'px';
-</body>         star.style.left = rand(0, 100) + 'vw';
-</body>         star.style.top = rand(0, 100) + 'vh';
-</body>         star.style.setProperty('--duration', rand(2, 5) + 's');
-</body>         star.style.setProperty('--delay', rand(0, 5) + 's');
-</body>         star.style.setProperty('--max-opacity', rand(0.3, 0.8));
-</body>         document.body.appendChild(star);
-</body>       }
-</body>     }
+      function createStars() {
+        if (starsCreated) return;
+        starsCreated = true;
+        for (var i = 0; i < 40; i++) {
+          var star = document.createElement('div');
+          star.className = 'star';
+          var size = rand(1, 3);
+          star.style.width = size + 'px';
+          star.style.height = size + 'px';
+          star.style.left = rand(0, 100) + 'vw';
+          star.style.top = rand(0, 100) + 'vh';
+          star.style.setProperty('--duration', rand(2, 5) + 's');
+          star.style.setProperty('--delay', rand(0, 5) + 's');
+          star.style.setProperty('--max-opacity', rand(0.3, 0.8));
+          document.body.appendChild(star);
+        }
+      }
 
-</body>     function removeStars() {
-</body>       var stars = document.querySelectorAll('.star');
-</body>       for (var i = 0; i < stars.length; i++) stars[i].remove();
-</body>       starsCreated = false;
-</body>     }
+      function removeStars() {
+        var stars = document.querySelectorAll('.star');
+        for (var i = 0; i < stars.length; i++) stars[i].remove();
+        starsCreated = false;
+      }
 
-</body>     var lastPawX = -100;
-</body>     var lastPawY = -100;
-</body>     var pawAlternating = false;
+      var lastPawX = -100;
+      var lastPawY = -100;
+      var pawAlternating = false;
 
-</body>     function spawnPaw(x, y) {
-</body>       var dx = x - lastPawX;
-</body>       var dy = y - lastPawY;
-</body>       if (Math.sqrt(dx * dx + dy * dy) < 70) return;
+      function spawnPaw(x, y) {
+        var dx = x - lastPawX;
+        var dy = y - lastPawY;
+        if (Math.sqrt(dx * dx + dy * dy) < 70) return;
 
-</body>       lastPawX = x;
-</body>       lastPawY = y;
+        lastPawX = x;
+        lastPawY = y;
 
-</body>       var paw = document.createElement('div');
-</body>       paw.className = 'paw-print';
-</body>       paw.textContent = '🐾';
-</body>       var offsetX = pawAlternating ? -12 : 12;
-</body>       pawAlternating = !pawAlternating;
-</body>       paw.style.left = (x + offsetX) + 'px';
-</body>       paw.style.top = y + 'px';
-</body>       document.body.appendChild(paw);
+        var paw = document.createElement('div');
+        paw.className = 'paw-print';
+        paw.textContent = '🐾';
+        var offsetX = pawAlternating ? -12 : 12;
+        pawAlternating = !pawAlternating;
+        paw.style.left = (x + offsetX) + 'px';
+        paw.style.top = y + 'px';
+        document.body.appendChild(paw);
 
-</body>       setTimeout(function () {
-</body>         paw.remove();
-</body>       }, 1600);
-</body>     }
+        setTimeout(function () {
+          paw.remove();
+        }, 1600);
+      }
 
-</body>     document.addEventListener('mousemove', function (e) {
-</body>       spawnPaw(e.clientX, e.clientY);
-</body>     });
+      document.addEventListener('mousemove', function (e) {
+        spawnPaw(e.clientX, e.clientY);
+      });
 
-</body>     document.addEventListener('touchmove', function (e) {
-</body>       var touch = e.touches[0];
-</body>       spawnPaw(touch.clientX, touch.clientY);
-</body>     }, { passive: true });
+      document.addEventListener('touchmove', function (e) {
+        var touch = e.touches[0];
+        spawnPaw(touch.clientX, touch.clientY);
+      }, { passive: true });
 
-</body>     document.addEventListener('touchstart', function (e) {
-</body>       var touch = e.touches[0];
-</body>       spawnPaw(touch.clientX, touch.clientY);
-</body>     }, { passive: true });
+      document.addEventListener('touchstart', function (e) {
+        var touch = e.touches[0];
+        spawnPaw(touch.clientX, touch.clientY);
+      }, { passive: true });
 
-</body>     function triggerPulse(el) {
-</body>       el.classList.remove('pulse');
-</body>       void el.offsetWidth;
-</body>       el.classList.add('pulse');
-</body>     }
+      function triggerPulse(el) {
+        el.classList.remove('pulse');
+        void el.offsetWidth;
+        el.classList.add('pulse');
+      }
 
-</body>     function calculateTogetherDays() {
-</body>       var now = new Date();
-</body>       var base = 9;
-</body>       for (var i = 0; i < events.length; i++) {
-</body>         var start = new Date(events[i].from);
-</body>         start.setHours(0, 0, 0, 0);
-</body>         var end = new Date(events[i].to + 'T23:59:59+02:00');
-</body>         if (now >= start) {
-</body>           var done = now < end ? Math.floor((now - start) / 86400000) + 1 : Math.ceil((end - start) / 86400000);
-</body>           base += done;
-</body>         }
-</body>       }
-</body>       return base;
-</body>     }
+      function calculateTogetherDays() {
+        var now = new Date();
+        var base = 9;
+        for (var i = 0; i < events.length; i++) {
+          var start = new Date(events[i].from);
+          start.setHours(0, 0, 0, 0);
+          var end = new Date(events[i].to + 'T23:59:59+02:00');
+          if (now >= start) {
+            var done = now < end ? Math.floor((now - start) / 86400000) + 1 : Math.ceil((end - start) / 86400000);
+            base += done;
+          }
+        }
+        return base;
+      }
 
-</body>     function launchConfetti() {
-</body>       var colors = ['#e8a0b4', '#f5c6a0', '#f0b8c8', '#fbbf24', '#6ee7b7', '#93c5fd', '#c4b5fd'];
-</body>       for (var i = 0; i < 80; i++) {
-</body>         var c = document.createElement('div');
-</body>         c.className = 'confetti';
-</body>         c.style.left = rand(0, 100) + 'vw';
-</body>         c.style.background = colors[Math.floor(rand(0, colors.length))];
-</body>         c.style.width = rand(5, 10) + 'px';
-</body>         c.style.height = rand(5, 10) + 'px';
-</body>         c.style.borderRadius = rand(0, 1) > 0.5 ? '50%' : '2px';
-</body>         c.style.setProperty('--fall-duration', rand(2, 4) + 's');
-</body>         c.style.setProperty('--spin', rand(360, 1080) + 'deg');
-</body>         c.style.animationDelay = rand(0, 1) + 's';
-</body>         document.body.appendChild(c);
-</body>         c.addEventListener('animationend', function () {
-</body>           this.remove();
-</body>         });
-</body>       }
-</body>     }
+      function launchConfetti() {
+        var colors = ['#e8a0b4', '#f5c6a0', '#f0b8c8', '#fbbf24', '#6ee7b7', '#93c5fd', '#c4b5fd'];
+        for (var i = 0; i < 80; i++) {
+          var c = document.createElement('div');
+          c.className = 'confetti';
+          c.style.left = rand(0, 100) + 'vw';
+          c.style.background = colors[Math.floor(rand(0, colors.length))];
+          c.style.width = rand(5, 10) + 'px';
+          c.style.height = rand(5, 10) + 'px';
+          c.style.borderRadius = rand(0, 1) > 0.5 ? '50%' : '2px';
+          c.style.setProperty('--fall-duration', rand(2, 4) + 's');
+          c.style.setProperty('--spin', rand(360, 1080) + 'deg');
+          c.style.animationDelay = rand(0, 1) + 's';
+          document.body.appendChild(c);
+          c.addEventListener('animationend', function () {
+            this.remove();
+          });
+        }
+      }
 
-</body>     var confettiLaunched = false;
+      var confettiLaunched = false;
 
-</body>     function buildSentence(d, h, m) {
-</body>       if (d > 0 && h > 0 && m > 0) return 'Nur noch ' + d + ' Tage, ' + h + ' Stunden und ' + m + ' Minuten';
-</body>       if (d > 0 && h > 0) return 'Nur noch ' + d + ' Tage und ' + h + ' Stunden';
-</body>       if (d > 0) return 'Nur noch ' + d + ' Tage';
-</body>       if (h > 0 && m > 0) return 'Nur noch ' + h + ' Stunden und ' + m + ' Minuten';
-</body>       if (h > 0) return 'Nur noch ' + h + ' Stunden';
-</body>       if (m > 0) return 'Nur noch ' + m + ' Minuten';
-</body>       return 'Gleich ist es soweit!';
-</body>     }
+      function buildSentence(d, h, m) {
+        if (d > 0 && h > 0 && m > 0) return 'Nur noch ' + d + ' Tage, ' + h + ' Stunden und ' + m + ' Minuten';
+        if (d > 0 && h > 0) return 'Nur noch ' + d + ' Tage und ' + h + ' Stunden';
+        if (d > 0) return 'Nur noch ' + d + ' Tage';
+        if (h > 0 && m > 0) return 'Nur noch ' + h + ' Stunden und ' + m + ' Minuten';
+        if (h > 0) return 'Nur noch ' + h + ' Stunden';
+        if (m > 0) return 'Nur noch ' + m + ' Minuten';
+        return 'Gleich ist es soweit!';
+      }
 
-</body>     function showView(hash) {
-</body>       if (hash === '#' + SECRET_HASH) {
-</body>         infoPage.style.display = 'none';
-</body>         countdownPage.style.display = 'block';
-</body>         createStars();
-</body>         if (activeEventIndex === -1) {
-</body>           var next = getNextEventIndex();
-</body>           if (next >= 0) selectEvent(next);
-</body>         }
-</body>       } else {
-</body>         infoPage.style.display = 'block';
-</body>         countdownPage.style.display = 'none';
-</body>         document.title = '';
-</body>         removeStars();
-</body>       }
-</body>     }
+      function showView(hash) {
+        if (hash === '#' + SECRET_HASH) {
+          infoPage.style.display = 'none';
+          countdownPage.style.display = 'block';
+          createStars();
+          if (activeEventIndex === -1) {
+            var next = getNextEventIndex();
+            if (next >= 0) selectEvent(next);
+          }
+        } else {
+          infoPage.style.display = 'block';
+          countdownPage.style.display = 'none';
+          document.title = '';
+          removeStars();
+        }
+      }
 
-</body>     function update() {
-</body>       if (activeEventIndex < 0) return;
+      function update() {
+        if (activeEventIndex < 0) return;
 
-</body>       var ev = events[activeEventIndex];
-</body>       var target = new Date(ev.from).getTime();
-</body>       var now = Date.now();
-</body>       var diff = target - now;
+        var ev = events[activeEventIndex];
+        var target = new Date(ev.from).getTime();
+        var now = Date.now();
+        var diff = target - now;
 
-</body>       if (diff <= 0) {
-</body>         countdownEl.style.display = 'none';
-</body>         arrivedEl.style.display = 'flex';
-</body>         sentenceEl.style.display = 'none';
-</body>         togetherEl.style.display = 'none';
-</body>         if (!confettiLaunched) {
-</body>           confettiLaunched = true;
-</body>           launchConfetti();
-</body>         }
-</body>         return;
-</body>       }
+        if (diff <= 0) {
+          countdownEl.style.display = 'none';
+          arrivedEl.style.display = 'flex';
+          sentenceEl.style.display = 'none';
+          togetherEl.style.display = 'none';
+          if (!confettiLaunched) {
+            confettiLaunched = true;
+            launchConfetti();
+          }
+          return;
+        }
 
-</body>       countdownEl.style.display = '';
-</body>       arrivedEl.style.display = 'none';
-</body>       sentenceEl.style.display = '';
-</body>       togetherEl.style.display = '';
+        countdownEl.style.display = '';
+        arrivedEl.style.display = 'none';
+        sentenceEl.style.display = '';
+        togetherEl.style.display = '';
 
-</body>       var totalSeconds = Math.floor(diff / 1000);
-</body>       var d = Math.floor(totalSeconds / 86400);
-</body>       var h = Math.floor(totalSeconds / 3600);
-</body>       var m = Math.floor((totalSeconds % 3600) / 60);
-</body>       var s = totalSeconds % 60;
+        var totalSeconds = Math.floor(diff / 1000);
+        var d = Math.floor(totalSeconds / 86400);
+        var h = Math.floor(totalSeconds / 3600);
+        var m = Math.floor((totalSeconds % 3600) / 60);
+        var s = totalSeconds % 60;
 
-</body>       var vals = { hours: h, minutes: pad(m, 2), seconds: pad(s, 2) };
+        var vals = { hours: h, minutes: pad(m, 2), seconds: pad(s, 2) };
 
-</body>       if (prevValues.hours !== vals.hours) { hoursEl.textContent = vals.hours; triggerPulse(hoursEl); }
-</body>       if (prevValues.minutes !== vals.minutes) { minutesEl.textContent = vals.minutes; triggerPulse(minutesEl); }
-</body>       if (prevValues.seconds !== vals.seconds) { secondsEl.textContent = vals.seconds; triggerPulse(secondsEl); }
+        if (prevValues.hours !== vals.hours) { hoursEl.textContent = vals.hours; triggerPulse(hoursEl); }
+        if (prevValues.minutes !== vals.minutes) { minutesEl.textContent = vals.minutes; triggerPulse(minutesEl); }
+        if (prevValues.seconds !== vals.seconds) { secondsEl.textContent = vals.seconds; triggerPulse(secondsEl); }
 
-</body>       prevValues = vals;
+        prevValues = vals;
 
-</body>       sentenceEl.textContent = buildSentence(d, h % 24, m);
+        sentenceEl.textContent = buildSentence(d, h % 24, m);
 
-</body>       var togetherDays = calculateTogetherDays();
-</body>       togetherEl.textContent = '♥ ' + togetherDays + ' Tage Zeit miteinander';
-</body>     }
+        var togetherDays = calculateTogetherDays();
+        togetherEl.textContent = '♥ ' + togetherDays + ' Tage Zeit miteinander';
+      }
 
-</body>     function tick() {
-</body>       update();
-</body>       requestAnimationFrame(tick);
-</body>     }
+      function tick() {
+        update();
+        requestAnimationFrame(tick);
+      }
 
-</body>     showView(window.location.hash);
-</body>     tick();
+      showView(window.location.hash);
+      tick();
 
-</body>     window.addEventListener('hashchange', function () {
-</body>       showView(window.location.hash);
-</body>     });
-</body>   })();
-</body>   </script>
+      window.addEventListener('hashchange', function () {
+        showView(window.location.hash);
+      });
+    })();
+    </script>
 </body>
 </html>
